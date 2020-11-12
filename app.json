@@ -1,0 +1,6 @@
+{
+  "name": "wikivesp_app",
+  "displayName": "wikivesp_app",
+  "orientation": "portait",
+  "icon": "./asset/logo.png"
+}
