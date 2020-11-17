@@ -25,17 +25,17 @@ export const LoadingArea = styled.View`
 export const UserImage = styled.Image`
   width: 300px;
   height: 300px;
-  borderRadius: 7px;
+  border-radius: 7px;
 `;
 
 export const BtnSubmitForm = styled.TouchableOpacity`
   background-color: ${colour.blue};
   width: 100%;
   height: 45px;
-  borderRadius: 7px;
+  border-radius: 7px;
   align-items: center;
   justify-content: center;
-  marginTop: 20px;
+  margin-top: 20px;
   padding: 0 15px;
 `;
 

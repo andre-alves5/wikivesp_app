@@ -59,7 +59,7 @@ export const LoadingArea = styled.View`
 `;
 
 export const CloseBtn = styled.TouchableOpacity`
-  alignItems: 'flex-end',
+  align-items: 'flex-end',
   position: 'absolute',
   margin-top: 25px,
   margin-right: 25px,
@@ -69,7 +69,7 @@ export const BtnSubmitForm = styled.TouchableOpacity`
   top: 15px;
   background-color: ${colour.blue};
   height: 45px;
-  borderRadius: 7px;
+  border-radius: 7px;
   align-items: center;
   justify-content: center;
 `;
@@ -79,14 +79,14 @@ export const TxtSubmitForm = styled.Text`
   font-size: 22px;
 `;
 
-export const ImageModal= styled.Modal`
-flex: 1;
-padding: 0 25px;
-align-items: center;
-justify-content: center;
-background-color: ${colour.black};
+export const ImageModal = styled.Modal`
+  flex: 1;
+  padding: 0 25px;
+  align-items: center;
+  justify-content: center;
+  background-color: ${colour.black};
 `;
 
-export const ImageBox= styled.View`
-padding: 0 25px;
+export const ImageBox = styled.View`
+  padding: 0 25px;
 `;

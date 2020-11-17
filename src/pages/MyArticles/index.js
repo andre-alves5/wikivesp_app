@@ -25,8 +25,9 @@ export default function MyArticles() {
   const [myarticles, setMyArticles] = useState('');
   const [limitResult, setLimitResult] = useState(10);
   const [loading, setLoading] = useState(false);
-  const [refreshing, setRefreshing] = useState(false)
-  const [reloading, setReloading] = useState(false)
+  const [refreshing, setRefreshing] = useState(false);
+  const [reloading, setReloading] = useState(false);
+  const [max, setMax] = useState('');
 
   const navigation = useNavigation();
 
@@ -43,6 +44,7 @@ export default function MyArticles() {
           },
         },
       );
+      setMax(response.data.articles.totalDocs);
       setMyArticles(
         response.data.articles.docs.map((Item, index) => ({
           key: `${index}`,
@@ -66,22 +68,23 @@ export default function MyArticles() {
     useCallback(() => {
       setLoading(true);
       getMyArticles(1, limitResult);
-      setLimitResult(limitResult + 10)
+      setLimitResult(limitResult + 10);
     }, []),
   );
 
   const loadPage = async () => {
     if (reloading) return;
-    setReloading(true)
+    if (limitResult >= max) return;
+    setReloading(true);
     await getMyArticles(1, limitResult);
     setReloading(false);
-  }
+  };
 
   const refreshList = async () => {
-    setRefreshing(true);    
+    setRefreshing(true);
     await getMyArticles(1, 10);
     setRefreshing(false);
-  }
+  };
 
   const closeRow = (rowMap, rowKey) => {
     if (rowMap[rowKey]) {
@@ -125,24 +128,24 @@ export default function MyArticles() {
         setLoading(false);
       });
   };
-    
-  const onRowDidOpen = rowKey => {
+
+  const onRowDidOpen = (rowKey) => {
     console.log('This row opened', rowKey);
   };
 
-  const onLeftActionStatusChange = rowKey => {
+  const onLeftActionStatusChange = (rowKey) => {
     console.log('onLeftActionStatusChange', rowKey);
   };
 
-  const onRightActionStatusChange = rowKey => {
+  const onRightActionStatusChange = (rowKey) => {
     console.log('onRightActionStatusChange', rowKey);
   };
 
-  const onRightAction = rowKey => {
+  const onRightAction = (rowKey) => {
     console.log('onRightAction', rowKey);
   };
 
-  const onLeftAction = rowKey => {
+  const onLeftAction = (rowKey) => {
     console.log('onLeftAction', rowKey);
   };
 
@@ -222,7 +225,7 @@ export default function MyArticles() {
       rowHeightAnimatedValue,
       onClose,
       onDelete,
-      onEdit
+      onEdit,
     } = props;
 
     if (rightActionActivated) {
@@ -253,15 +256,15 @@ export default function MyArticles() {
       <Animated.View style={[styles.rowBack, {height: rowHeightAnimatedValue}]}>
         {!rightActionActivated && (
           <TouchableOpacity
-          style={[styles.backLeftBtn, styles.backLeftBtnRight]}
-          onPress={onClose}>
-          <MaterialCommunityIcons
-            name="close-circle-outline"
-            size={25}
-            style={styles.leftBtn}
-            color="#fff"
-          />
-        </TouchableOpacity>
+            style={[styles.backLeftBtn, styles.backLeftBtnRight]}
+            onPress={onClose}>
+            <MaterialCommunityIcons
+              name="close-circle-outline"
+              size={25}
+              style={styles.leftBtn}
+              color="#fff"
+            />
+          </TouchableOpacity>
         )}
         {!rightActionActivated && (
           <Animated.View

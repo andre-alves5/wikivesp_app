@@ -1,6 +1,24 @@
 import React, {useContext, useState, useCallback} from 'react';
-import {ActivityIndicator, Text, Button, View, TouchableOpacity, Alert, Image} from 'react-native';
-import {Container, LoadingArea, BtnSubmitForm, TxtSubmitForm, ViewHome, TxtInfo, TxtName, ViewTop, LogoImage} from './styles';
+import {
+  ActivityIndicator,
+  Text,
+  Button,
+  View,
+  TouchableOpacity,
+  Alert,
+  Image,
+} from 'react-native';
+import {
+  Container,
+  LoadingArea,
+  BtnSubmitForm,
+  TxtSubmitForm,
+  ViewHome,
+  TxtInfo,
+  TxtName,
+  ViewTop,
+  LogoImage,
+} from './styles';
 import {AuthContext} from '../../contexts/auth';
 import AsyncStorage from '@react-native-community/async-storage';
 import {useNavigation, useFocusEffect} from '@react-navigation/native';
@@ -10,22 +28,18 @@ export default function Home() {
   const {signOut} = useContext(AuthContext);
   const [countmyarticles, setCountMyArticles] = useState('');
   const [countallarticles, setCountAllArticles] = useState('');
-  const [autorName, setAutorName] = useState('')
+  const [autorName, setAutorName] = useState('');
   const [loading, setLoading] = useState(false);
 
   const getAllArticles = async () => {
     setLoading(true);
     const token = await AsyncStorage.getItem('@token');
     try {
-
-      const response = await api.get(
-        '/allarticles' ,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      const response = await api.get('/allarticles', {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      );
+      });
       setCountAllArticles(response.data.articles.totalDocs);
       setLoading(false);
     } catch (err) {
@@ -43,16 +57,13 @@ export default function Home() {
     const token = await AsyncStorage.getItem('@token');
     const idAutor = await AsyncStorage.getItem('@idAutor');
     const autor = await AsyncStorage.getItem('@autor');
-    setAutorName(autor)
+    setAutorName(autor);
     try {
-      const response = await api.get(
-        '/myarticles/' + idAutor,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      const response = await api.get('/myarticles/' + idAutor, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      );
+      });
       setCountMyArticles(response.data.articles.totalDocs);
       setLoading(false);
     } catch (err) {
@@ -71,7 +82,6 @@ export default function Home() {
       getMyArticles();
     }, []),
   );
-
 
   return (
     <Container>

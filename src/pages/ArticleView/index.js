@@ -150,6 +150,7 @@ export default function AllArticlesView({route}) {
                         ? {width: width, height: 300, uri: dialog}
                         : null
                     }
+                    resizeMode={'contain'}
                   />
                 </ReactNativeZoomableView>
               </ScrollView>

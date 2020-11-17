@@ -3,8 +3,8 @@ import styled from 'styled-components/native';
 import colour from '../../config/colours';
 
 export const Container = styled.SafeAreaView`
-flex: 1;
-background-color: ${colour.white};
+  flex: 1;
+  background-color: ${colour.white};
 `;
 
 export const LoadingArea = styled.View`
@@ -51,12 +51,10 @@ export const ViewHome = styled.View`
 `;
 
 export const ViewTop = styled.View`
-align-items: center;
-justify-content: center;
-align-self: center;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
 `;
 export const LogoImage = styled.Image`
   align-self: center;
-`
-
-
+`;

@@ -66,7 +66,7 @@ export const LoadingArea = styled.View`
 `;
 
 export const CloseBtn = styled.TouchableOpacity`
-  alignItems: 'flex-end',
+  align-items: 'flex-end',
   position: 'absolute',
   margin-top: 25px,
   margin-right: 25px,
@@ -83,4 +83,3 @@ export const SubTitleImgModal = styled.Modal`
 export const SubTitleImg = styled.Image`
   height: '300';
 `;
-

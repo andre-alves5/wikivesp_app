@@ -23,7 +23,7 @@ import {
   ContentUser,
   BtnSubmitForm,
   TxtSubmitForm,
-  SubTitleImg
+  SubTitleImg,
 } from './styles';
 import api from '../../config/api';
 
@@ -81,6 +81,7 @@ export default function AllArticlesView({route}) {
               <Image
                 source={{width: width, height: 150, uri: articleBody.url}}
                 fadeDuration={600}
+                resizeMode={'contain'}
                 style={{paddingHorizontal: 25}}
               />
             </TouchableOpacity>
@@ -129,6 +130,7 @@ export default function AllArticlesView({route}) {
                     ? {width: width, height: 300, uri: dialog}
                     : null
                 }
+                resizeMode={'contain'}
               />
             </ReactNativeZoomableView>
           </ScrollView>

@@ -17,6 +17,7 @@ import {
   ViewImageUser,
   BtnSubmitForm,
   TxtSubmitForm,
+  MainView,
 } from './styles';
 
 import api from '../../config/api';
@@ -62,7 +63,7 @@ export default function Perfil() {
           <ActivityIndicator size="large" color="#fff" />
         </LoadingArea>
       ) : (
-        <ScrollView style={{flex:1}}>
+        <MainView>
           <ViewImageUser>
             <ImageUser
               source={{width: 180, height: 180, uri: user.url}}
@@ -120,7 +121,7 @@ export default function Perfil() {
               </TxtSubmitForm>
             </BtnSubmitForm>
           )}
-        </ScrollView>
+        </MainView>
       )}
     </Container>
   );

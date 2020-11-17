@@ -11,7 +11,13 @@ import {
 } from 'react-native';
 
 import {useNavigation, useFocusEffect} from '@react-navigation/native';
-import {LoadingArea, BtnSubmitForm, TxtSubmitForm, UserImage, Container} from './styles';
+import {
+  LoadingArea,
+  BtnSubmitForm,
+  TxtSubmitForm,
+  UserImage,
+  Container,
+} from './styles';
 import ImagePicker from 'react-native-image-picker';
 import AsyncStorage from '@react-native-community/async-storage';
 import api from '../../config/api';
@@ -120,6 +126,7 @@ export default function EditProfileImage() {
             ? {width: '100%', height: 150, uri: url}
             : Placeholder
         }
+        resizeMode={'contain'}
         fadeDuration={1000}
       />
       <BtnSubmitForm

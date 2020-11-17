@@ -27,7 +27,7 @@ export const RowArticle = styled.View`
   height: 60;
   padding: 10px;
   margin: 5px;
-  marginBottom: 15px;
+  margin-bottom: 15px;
   border-radius: 5;
   flex-direction: row;
   justify-content: flex-start;
@@ -93,7 +93,7 @@ export const LoadingArea = styled.View`
 
 export const Loading = styled.ActivityIndicator.attrs({
   size: 'small',
-  color: '#999'
+  color: '#999',
 })`
   margin: 30px 0;
 `;

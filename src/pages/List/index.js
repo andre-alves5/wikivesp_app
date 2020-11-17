@@ -23,7 +23,7 @@ import {
   PaginationText,
   PaginationTextActive,
   LoadingArea,
-  Loading
+  Loading,
 } from './styles';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -35,8 +35,9 @@ export default function List() {
   const [articles, setArticles] = useState('');
   const [limitResult, setLimitResult] = useState(10);
   const [loading, setLoading] = useState(false);
-  const [refreshing, setRefreshing] = useState(false)
-  const [reloading, setReloading] = useState(false)
+  const [refreshing, setRefreshing] = useState(false);
+  const [reloading, setReloading] = useState(false);
+  const [max, setMax] = useState('');
 
   const navigation = useNavigation();
 
@@ -52,6 +53,7 @@ export default function List() {
           },
         },
       );
+      setMax(response.data.articles.totalDocs);
       setArticles(
         response.data.articles.docs.map((Item, index) => ({
           key: `${index}`,
@@ -75,22 +77,23 @@ export default function List() {
     useCallback(() => {
       setLoading(true);
       getArticles(1, limitResult);
-      setLimitResult(limitResult + 10)
+      setLimitResult(limitResult + 10);
     }, []),
   );
 
   const loadPage = async () => {
     if (reloading) return;
-    setReloading(true)
+    if (limitResult >= max) return;
+    setReloading(true);
     await getArticles(1, limitResult);
     setReloading(false);
-  }
+  };
 
   const refreshList = async () => {
-    setRefreshing(true);    
+    setRefreshing(true);
     await getArticles(1, 10);
     setRefreshing(false);
-  }
+  };
 
   const VisibleItem = (props) => {
     const {data, rowHeightAnimatedValue} = props;
@@ -143,7 +146,7 @@ export default function List() {
           <ActivityIndicator size="large" color="#fff" />
         </LoadingArea>
       ) : (
-        <FlatList 
+        <FlatList
           data={articles}
           renderItem={renderItem}
           onRefresh={refreshList}

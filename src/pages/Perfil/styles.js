@@ -62,7 +62,7 @@ export const LoadingArea = styled.View`
 export const ImageUser = styled.Image`
   top: 20px;
   bottom: 20px;
-  borderRadius: 100px;
+  border-radius: 100px;
 `;
 
 export const ViewName = styled.View`
@@ -78,7 +78,7 @@ export const BtnSubmitForm = styled.TouchableOpacity`
   top: 20px;
   width: 100%;
   height: 45px;
-  borderRadius: 7px;
+  border-radius: 7px;
   align-items: center;
   justify-content: center;
 `;
@@ -87,3 +87,5 @@ export const TxtSubmitForm = styled.Text`
   color: #fff;
   font-size: 22px;
 `;
+
+export const MainView = styled.ScrollView``;

@@ -23,13 +23,15 @@ import api from '../../config/api';
 
 export default function ArticleBody({route}) {
   const [articleDetails, setArticleDetails] = useState('');
-  const [limitResult, setLimitResult] = useState(5);
+  const [limitResult, setLimitResult] = useState(10);
   const [loading, setLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  const [reloading, setReloading] = useState(false);
+  const [max, setMax] = useState('');
 
   const navigation = useNavigation();
 
   const getArticleDetails = async (page, limit) => {
-    setLoading(true);
     try {
       const token = await AsyncStorage.getItem('@token');
       const {idArticle} = route.params;
@@ -42,6 +44,7 @@ export default function ArticleBody({route}) {
           },
         },
       );
+      setMax(response.data.articledetails.totalDocs);
       setArticleDetails(
         response.data.articledetails.docs.map((Item, index) => ({
           key: `${index}`,
@@ -63,9 +66,25 @@ export default function ArticleBody({route}) {
 
   useFocusEffect(
     useCallback(() => {
+      setLoading(true);
       getArticleDetails(1, limitResult);
+      setLimitResult(limitResult + 10);
     }, [navigation]),
   );
+
+  const loadPage = async () => {
+    if (reloading) return;
+    if (limitResult >= max) return;
+    setReloading(true);
+    await getArticleDetails(1, limitResult);
+    setReloading(false);
+  };
+
+  const refreshList = async () => {
+    setRefreshing(true);
+    await getArticleDetails(1, 10);
+    setRefreshing(false);
+  };
 
   const closeRow = (rowMap, rowKey) => {
     if (rowMap[rowKey]) {
@@ -73,13 +92,13 @@ export default function ArticleBody({route}) {
     }
   };
 
-  const editRow = (idSubTitulo) => {
+  const editRow = (rowMap, idSubTitulo) => {
     navigation.navigate('EditArticleBody', {
       idSubTitulo,
     });
   };
 
-  const deleteRow = async (idArticleBody) => {
+  const deleteRow = async (rowMap, idArticleBody) => {
     setLoading(true);
     const token = await AsyncStorage.getItem('@token');
 
@@ -105,6 +124,26 @@ export default function ArticleBody({route}) {
         }
         setLoading(false);
       });
+  };
+
+  const onRowDidOpen = (rowKey) => {
+    console.log('This row opened', rowKey);
+  };
+
+  const onLeftActionStatusChange = (rowKey) => {
+    console.log('onLeftActionStatusChange', rowKey);
+  };
+
+  const onRightActionStatusChange = (rowKey) => {
+    console.log('onRightActionStatusChange', rowKey);
+  };
+
+  const onRightAction = (rowKey) => {
+    console.log('onRightAction', rowKey);
+  };
+
+  const onLeftAction = (rowKey) => {
+    console.log('onLeftAction', rowKey);
   };
 
   const addArticleBody = () => {
@@ -190,6 +229,7 @@ export default function ArticleBody({route}) {
       rowHeightAnimatedValue,
       onClose,
       onDelete,
+      onEdit,
     } = props;
 
     if (rightActionActivated) {
@@ -219,6 +259,18 @@ export default function ArticleBody({route}) {
     return (
       <Animated.View style={[styles.rowBack, {height: rowHeightAnimatedValue}]}>
         {!rightActionActivated && (
+          <TouchableOpacity
+            style={[styles.backLeftBtn, styles.backLeftBtnRight]}
+            onPress={onClose}>
+            <MaterialCommunityIcons
+              name="close-circle-outline"
+              size={25}
+              style={styles.leftBtn}
+              color="#fff"
+            />
+          </TouchableOpacity>
+        )}
+        {!rightActionActivated && (
           <Animated.View
             style={[
               styles.backLeftBtn,
@@ -230,16 +282,16 @@ export default function ArticleBody({route}) {
             ]}>
             <TouchableOpacity
               style={[styles.backLeftBtn, styles.backLeftBtnLeft]}
-              onPress={onDelete}>
+              onPress={onEdit}>
               <Animated.View
                 style={[
-                  styles.trash,
+                  styles.leftBtn,
                   {
                     transform: [
                       {
                         scale: swipeAnimatedValue.interpolate({
-                          inputRange: [-90, -45],
-                          outputRange: [1, 0],
+                          inputRange: [45, 90],
+                          outputRange: [0, 1],
                           extrapolate: 'clamp',
                         }),
                       },
@@ -249,7 +301,7 @@ export default function ArticleBody({route}) {
                 <MaterialCommunityIcons
                   name="file-edit-outline"
                   size={25}
-                  color="#000"
+                  color="#fff"
                 />
               </Animated.View>
             </TouchableOpacity>
@@ -319,8 +371,8 @@ export default function ArticleBody({route}) {
         rowActionAnimatedValue={rowActionAnimatedValue}
         rowHeightAnimatedValue={rowHeightAnimatedValue}
         onClose={() => closeRow(rowMap, data.item.key)}
-        onEdit={() => editRow(data.item.id)}
-        onDelete={() => deleteRow(data.item.id)}
+        onEdit={() => editRow(rowMap, data.item.id)}
+        onDelete={() => deleteRow(rowMap, data.item.id)}
       />
     );
   };
@@ -337,12 +389,22 @@ export default function ArticleBody({route}) {
             data={articleDetails}
             renderItem={renderItem}
             renderHiddenItem={renderHiddenItem}
-            leftOpenValue={75}
+            leftOpenValue={150}
             rightOpenValue={-150}
-            leftActivationValue={100}
+            leftActivationValue={200}
             rightActivationValue={-200}
             leftActionValue={0}
-            rightActionValue={-500}
+            rightActionValue={-600}
+            onRowDidOpen={onRowDidOpen}
+            onLeftAction={onLeftAction}
+            onRightAction={onRightAction}
+            onLeftActionStatusChange={onLeftActionStatusChange}
+            onRightActionStatusChange={onRightActionStatusChange}
+            onRefresh={refreshList}
+            refreshing={refreshing}
+            onEndReachedThreshold={0.1}
+            onEndReached={() => loadPage()}
+            ListFooterComponent={reloading && <Loading />}
           />
           <BtnAddForm disabled={loading} onPress={addArticleBody}>
             <TxtSubmitForm>Adicionar</TxtSubmitForm>
@@ -411,12 +473,12 @@ const styles = StyleSheet.create({
     paddingLeft: 17,
   },
   backRightBtnLeft: {
-    backgroundColor: '#1f65ff',
+    backgroundColor: 'dodgerblue',
     right: 75,
   },
 
   backLeftBtnRight: {
-    backgroundColor: '#1f65ff',
+    backgroundColor: 'dodgerblue',
     left: 75,
   },
   backRightBtnRight: {
@@ -426,7 +488,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 5,
   },
   backLeftBtnLeft: {
-    backgroundColor: 'yellow',
+    backgroundColor: 'orange',
     left: 0,
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,

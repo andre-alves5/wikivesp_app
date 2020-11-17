@@ -20,7 +20,7 @@ import EditArticle from '../pages/EditArticle';
 import EditArticleBody from '../pages/EditArticleBody';
 import EditArticleBodyImage from '../pages/EditArticleBodyImage';
 import EditPerfil from '../pages/EditPerfil';
-import EditProfileImage from '../pages/EditProfileImage'
+import EditProfileImage from '../pages/EditProfileImage';
 
 const Stack = createStackNavigator();
 

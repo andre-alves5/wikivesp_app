@@ -124,16 +124,17 @@ export default function EditArticleBodyImage({route}) {
             : Placeholder
         }
         fadeDuration={1000}
+        resizeMode={'contain'}
         style={styles.image}
       />
       <BtnSubmitForm
         onPress={() =>
           ImagePicker.showImagePicker(imagePickerOptions, imagePickerCallback)
         }>
-        <TxtSubmitForm >Escolher imagem</TxtSubmitForm>
+        <TxtSubmitForm>Escolher imagem</TxtSubmitForm>
       </BtnSubmitForm>
-      <BtnSubmitForm  onPress={uploadImage}>
-        <TxtSubmitForm >Enviar imagem</TxtSubmitForm>
+      <BtnSubmitForm onPress={uploadImage}>
+        <TxtSubmitForm>Enviar imagem</TxtSubmitForm>
       </BtnSubmitForm>
 
       {loading && (

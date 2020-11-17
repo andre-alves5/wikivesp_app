@@ -61,7 +61,7 @@ export const LoadingArea = styled.View`
 `;
 
 export const CloseBtn = styled.TouchableOpacity`
-  alignItems: 'flex-end',
+  align-items: 'flex-end',
   position: 'absolute',
   margin-top: 25px,
   margin-right: 25px,
@@ -80,15 +80,14 @@ export const SubTitleImg = styled.Image`
   height: '300';
 `;
 
-
 export const BtnSubmitForm = styled.TouchableOpacity`
   background-color: ${colour.blue};
   width: 100%;
   height: 45px;
-  borderRadius: 7px;
+  border-radius: 7px;
   align-items: center;
   justify-content: center;
-  marginTop: 20px;
+  margin-top: 20px;
   padding: 0 15px;
 `;
 
