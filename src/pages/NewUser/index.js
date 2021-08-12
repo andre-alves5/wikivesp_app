@@ -58,7 +58,7 @@ export default function Login() {
       return false;
     }
     if (password.length < 6) {
-      Alert.alert('', 'A senha precisa ter pelo menos seis caracteres!');
+      Alert.alert('', 'A senha precisa ter pelo menos 6 caracteres!');
       return false;
     }
 
