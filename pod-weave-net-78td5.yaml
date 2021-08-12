@@ -1,0 +1,481 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2020-12-11T20:53:23Z"
+  generateName: weave-net-
+  labels:
+    controller-revision-hash: 6b6bdb4ccb
+    name: weave-net
+    pod-template-generation: "1"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:generateName: {}
+        f:labels:
+          .: {}
+          f:controller-revision-hash: {}
+          f:name: {}
+          f:pod-template-generation: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"96ae18f2-02a6-49e2-a203-3fbb0a1fcc8e"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        f:affinity:
+          .: {}
+          f:nodeAffinity:
+            .: {}
+            f:requiredDuringSchedulingIgnoredDuringExecution:
+              .: {}
+              f:nodeSelectorTerms: {}
+        f:containers:
+          k:{"name":"weave"}:
+            .: {}
+            f:command: {}
+            f:env:
+              .: {}
+              k:{"name":"HOSTNAME"}:
+                .: {}
+                f:name: {}
+                f:valueFrom:
+                  .: {}
+                  f:fieldRef:
+                    .: {}
+                    f:apiVersion: {}
+                    f:fieldPath: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:readinessProbe:
+              .: {}
+              f:failureThreshold: {}
+              f:httpGet:
+                .: {}
+                f:host: {}
+                f:path: {}
+                f:port: {}
+                f:scheme: {}
+              f:periodSeconds: {}
+              f:successThreshold: {}
+              f:timeoutSeconds: {}
+            f:resources:
+              .: {}
+              f:requests:
+                .: {}
+                f:cpu: {}
+                f:memory: {}
+            f:securityContext:
+              .: {}
+              f:privileged: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:volumeMounts:
+              .: {}
+              k:{"mountPath":"/host/etc"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/host/home"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/host/opt"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/host/var/lib/dbus"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/lib/modules"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/run/xtables.lock"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+              k:{"mountPath":"/weavedb"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+          k:{"name":"weave-npc"}:
+            .: {}
+            f:env:
+              .: {}
+              k:{"name":"HOSTNAME"}:
+                .: {}
+                f:name: {}
+                f:valueFrom:
+                  .: {}
+                  f:fieldRef:
+                    .: {}
+                    f:apiVersion: {}
+                    f:fieldPath: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources:
+              .: {}
+              f:requests:
+                .: {}
+                f:cpu: {}
+                f:memory: {}
+            f:securityContext:
+              .: {}
+              f:privileged: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:volumeMounts:
+              .: {}
+              k:{"mountPath":"/run/xtables.lock"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:hostNetwork: {}
+        f:hostPID: {}
+        f:priorityClassName: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext:
+          .: {}
+          f:seLinuxOptions: {}
+        f:serviceAccount: {}
+        f:serviceAccountName: {}
+        f:terminationGracePeriodSeconds: {}
+        f:tolerations: {}
+        f:volumes:
+          .: {}
+          k:{"name":"cni-bin"}:
+            .: {}
+            f:hostPath:
+              .: {}
+              f:path: {}
+              f:type: {}
+            f:name: {}
+          k:{"name":"cni-bin2"}:
+            .: {}
+            f:hostPath:
+              .: {}
+              f:path: {}
+              f:type: {}
+            f:name: {}
+          k:{"name":"cni-conf"}:
+            .: {}
+            f:hostPath:
+              .: {}
+              f:path: {}
+              f:type: {}
+            f:name: {}
+          k:{"name":"dbus"}:
+            .: {}
+            f:hostPath:
+              .: {}
+              f:path: {}
+              f:type: {}
+            f:name: {}
+          k:{"name":"lib-modules"}:
+            .: {}
+            f:hostPath:
+              .: {}
+              f:path: {}
+              f:type: {}
+            f:name: {}
+          k:{"name":"weavedb"}:
+            .: {}
+            f:hostPath:
+              .: {}
+              f:path: {}
+              f:type: {}
+            f:name: {}
+          k:{"name":"xtables-lock"}:
+            .: {}
+            f:hostPath:
+              .: {}
+              f:path: {}
+              f:type: {}
+            f:name: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-12-11T20:53:23Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"192.168.10.50"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2020-12-12T13:10:58Z"
+  name: weave-net-78td5
+  namespace: kube-system
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: DaemonSet
+    name: weave-net
+    uid: 96ae18f2-02a6-49e2-a203-3fbb0a1fcc8e
+  resourceVersion: "29841"
+  uid: 8b556231-bcae-4740-a20b-0fb94f09ff1e
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchFields:
+          - key: metadata.name
+            operator: In
+            values:
+            - kube-master
+  containers:
+  - command:
+    - /home/weave/launch.sh
+    env:
+    - name: HOSTNAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: spec.nodeName
+    image: docker.io/weaveworks/weave-kube:2.7.0
+    imagePullPolicy: IfNotPresent
+    name: weave
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        host: 127.0.0.1
+        path: /status
+        port: 6784
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      requests:
+        cpu: 50m
+        memory: 100Mi
+    securityContext:
+      privileged: true
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /weavedb
+      name: weavedb
+    - mountPath: /host/opt
+      name: cni-bin
+    - mountPath: /host/home
+      name: cni-bin2
+    - mountPath: /host/etc
+      name: cni-conf
+    - mountPath: /host/var/lib/dbus
+      name: dbus
+    - mountPath: /lib/modules
+      name: lib-modules
+    - mountPath: /run/xtables.lock
+      name: xtables-lock
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: weave-net-token-m5jn2
+      readOnly: true
+  - env:
+    - name: HOSTNAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: spec.nodeName
+    image: docker.io/weaveworks/weave-npc:2.7.0
+    imagePullPolicy: IfNotPresent
+    name: weave-npc
+    resources:
+      requests:
+        cpu: 50m
+        memory: 100Mi
+    securityContext:
+      privileged: true
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /run/xtables.lock
+      name: xtables-lock
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: weave-net-token-m5jn2
+      readOnly: true
+  dnsPolicy: ClusterFirstWithHostNet
+  enableServiceLinks: true
+  hostNetwork: true
+  hostPID: true
+  nodeName: kube-master
+  preemptionPolicy: PreemptLowerPriority
+  priority: 2000001000
+  priorityClassName: system-node-critical
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    seLinuxOptions: {}
+  serviceAccount: weave-net
+  serviceAccountName: weave-net
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoSchedule
+    operator: Exists
+  - effect: NoExecute
+    operator: Exists
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/disk-pressure
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/pid-pressure
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/unschedulable
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/network-unavailable
+    operator: Exists
+  volumes:
+  - hostPath:
+      path: /var/lib/weave
+      type: ""
+    name: weavedb
+  - hostPath:
+      path: /opt
+      type: ""
+    name: cni-bin
+  - hostPath:
+      path: /home
+      type: ""
+    name: cni-bin2
+  - hostPath:
+      path: /etc
+      type: ""
+    name: cni-conf
+  - hostPath:
+      path: /var/lib/dbus
+      type: ""
+    name: dbus
+  - hostPath:
+      path: /lib/modules
+      type: ""
+    name: lib-modules
+  - hostPath:
+      path: /run/xtables.lock
+      type: FileOrCreate
+    name: xtables-lock
+  - name: weave-net-token-m5jn2
+    secret:
+      defaultMode: 420
+      secretName: weave-net-token-m5jn2
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-12-11T20:53:23Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-12-12T13:10:57Z"
+    message: 'containers with unready status: [weave]'
+    reason: ContainersNotReady
+    status: "False"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-12-12T13:10:57Z"
+    message: 'containers with unready status: [weave]'
+    reason: ContainersNotReady
+    status: "False"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-12-11T20:53:23Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://ebac6c0ae068804475add8e22db32827fada0ef0099dd9a825706c67dff6e2be
+    image: weaveworks/weave-kube:2.7.0
+    imageID: docker-pullable://weaveworks/weave-kube@sha256:f5488cc0e18f0df33aace12f13b5d7c479e3202ae4baf3971b7572d9c9e8fa0a
+    lastState:
+      terminated:
+        containerID: docker://ebac6c0ae068804475add8e22db32827fada0ef0099dd9a825706c67dff6e2be
+        exitCode: 1
+        finishedAt: "2020-12-12T14:15:51Z"
+        reason: Error
+        startedAt: "2020-12-12T14:15:51Z"
+    name: weave
+    ready: false
+    restartCount: 25
+    started: false
+    state:
+      waiting:
+        message: back-off 5m0s restarting failed container=weave pod=weave-net-78td5_kube-system(8b556231-bcae-4740-a20b-0fb94f09ff1e)
+        reason: CrashLoopBackOff
+  - containerID: docker://15c715bdd22268ab306a8186cd8a7f799b0e0ffa714570454c657c4faadc046c
+    image: weaveworks/weave-npc:2.7.0
+    imageID: docker-pullable://weaveworks/weave-npc@sha256:4ae4204ead601e63447f8d004c6fd4490a44155d68cce11503eedf94f4b4c4ce
+    lastState:
+      terminated:
+        containerID: docker://c9a3c23ce827a8d43b990b9a5be23959a0e1091a5ea683a1e3f369d99e20f97d
+        exitCode: 1
+        finishedAt: "2020-12-12T13:53:37Z"
+        reason: Error
+        startedAt: "2020-12-12T13:11:00Z"
+    name: weave-npc
+    ready: true
+    restartCount: 2
+    started: true
+    state:
+      running:
+        startedAt: "2020-12-12T13:54:27Z"
+  hostIP: 192.168.10.50
+  phase: Running
+  podIP: 192.168.10.50
+  podIPs:
+  - ip: 192.168.10.50
+  qosClass: Burstable
+  startTime: "2020-12-11T20:53:23Z"

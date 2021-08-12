@@ -3,21 +3,17 @@ import {
   ActivityIndicator,
   Alert,
   View,
-  TouchableOpacity,
-  Text,
   StyleSheet,
   Image,
   Dimensions,
 } from 'react-native';
 
-import {useNavigation, useFocusEffect} from '@react-navigation/native';
+import {useFocusEffect} from '@react-navigation/native';
 import {LoadingArea, BtnSubmitForm, TxtSubmitForm} from './styles';
 import ImagePicker from 'react-native-image-picker';
 import AsyncStorage from '@react-native-community/async-storage';
 import api from '../../config/api';
 import Placeholder from '../../../assets/placeholder.jpg';
-
-const {width} = Dimensions.get('window');
 
 export default function EditArticleBodyImage({route}) {
   const [image, setImage] = useState('');

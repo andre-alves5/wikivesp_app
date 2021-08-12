@@ -12,16 +12,6 @@ import {
 } from 'react-native';
 
 import {
-  Container,
-  TitleList,
-  ListArticles,
-  RowArticle,
-  DataArticle,
-  ValueArticle,
-  ViewArticle,
-  Pagination,
-  PaginationText,
-  PaginationTextActive,
   LoadingArea,
   Loading,
 } from './styles';

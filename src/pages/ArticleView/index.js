@@ -22,8 +22,6 @@ import {
   LoadingArea,
   ContentUser,
   SubTitleContent,
-  SubTitleImgModal,
-  SubTitleImg,
 } from './styles';
 import api from '../../config/api';
 

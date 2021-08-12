@@ -76,6 +76,7 @@ export const ViewImageUser = styled.View`
 export const BtnSubmitForm = styled.TouchableOpacity`
   background-color: ${colour.blue};
   top: 20px;
+  margin-bottom: 20px;
   width: 100%;
   height: 45px;
   border-radius: 7px;
@@ -87,5 +88,3 @@ export const TxtSubmitForm = styled.Text`
   color: #fff;
   font-size: 22px;
 `;
-
-export const MainView = styled.ScrollView``;

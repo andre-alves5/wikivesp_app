@@ -26,6 +26,7 @@ export const ContentUser = styled.Text`
 
 export const BtnActionEdit = styled.TouchableOpacity`
   margin-top: 15px;
+  margin-bottom: 20px;
   background-color: ${colour.blue};
   height: 45px;
   align-items: center;
@@ -67,6 +68,7 @@ export const CloseBtn = styled.TouchableOpacity`
 
 export const BtnSubmitForm = styled.TouchableOpacity`
   top: 15px;
+  margin-bottom: 20px;
   background-color: ${colour.blue};
   height: 45px;
   border-radius: 7px;

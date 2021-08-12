@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -50,7 +50,6 @@ export default function EditPerfil({route}) {
         setLoading(false);
       } else {
         Alert.alert('', 'Artigo não encontrado, tente novamente!');
-        console.log(idArticle);
         navigation.navigate('MyArticles');
       }
     }
@@ -89,7 +88,6 @@ export default function EditPerfil({route}) {
 
   const viewArticleBody = () => {
     const {idArticle} = route.params;
-    console.log(idArticle);
     navigation.navigate('ArticleBody', {
       idArticle,
     });

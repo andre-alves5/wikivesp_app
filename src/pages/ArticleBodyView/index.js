@@ -2,8 +2,6 @@ import React, {useState, useCallback} from 'react';
 import {
   Alert,
   ActivityIndicator,
-  FlatList,
-  Text,
   Image,
   View,
   Modal,
@@ -23,7 +21,6 @@ import {
   ContentUser,
   BtnSubmitForm,
   TxtSubmitForm,
-  SubTitleImg,
 } from './styles';
 import api from '../../config/api';
 
@@ -68,6 +65,7 @@ export default function AllArticlesView({route}) {
 
   return (
     <Container>
+      <ScrollView contentContainerStyle={{flexGrow: 1}}>
       <TitleContent>Subtítulo: </TitleContent>
       <ContentUser>{articleBody.subTitulo}</ContentUser>
 
@@ -142,6 +140,7 @@ export default function AllArticlesView({route}) {
           <ActivityIndicator size="large" color="#fff" />
         </LoadingArea>
       )}
+      </ScrollView>
     </Container>
   );
 }

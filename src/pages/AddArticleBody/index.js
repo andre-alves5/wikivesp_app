@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ActivityIndicator, Alert} from 'react-native';
+import {ActivityIndicator, Alert, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {
   Container,
@@ -12,7 +12,6 @@ import {
 } from './styles';
 
 import api from '../../config/api';
-import {ScrollView} from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export default function AddArticleBody({route}) {

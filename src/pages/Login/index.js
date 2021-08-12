@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState} from 'react';
 import {ScrollView, Image, Alert, ActivityIndicator} from 'react-native';
 import {
   Container,

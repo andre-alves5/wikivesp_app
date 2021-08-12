@@ -1,13 +1,10 @@
 import React, {useContext, useState, useCallback} from 'react';
 import {
   ActivityIndicator,
-  Text,
-  Button,
   View,
-  TouchableOpacity,
   Alert,
-  Image,
 } from 'react-native';
+
 import {
   Container,
   LoadingArea,
@@ -19,9 +16,10 @@ import {
   ViewTop,
   LogoImage,
 } from './styles';
+
 import {AuthContext} from '../../contexts/auth';
 import AsyncStorage from '@react-native-community/async-storage';
-import {useNavigation, useFocusEffect} from '@react-navigation/native';
+import {useFocusEffect} from '@react-navigation/native';
 import api from '../../config/api';
 
 export default function Home() {

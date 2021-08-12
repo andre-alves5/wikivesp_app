@@ -2,15 +2,10 @@ import React, {useState, useCallback} from 'react';
 import {
   ActivityIndicator,
   Alert,
-  View,
-  TouchableOpacity,
-  Text,
   StyleSheet,
-  Image,
-  Dimensions,
 } from 'react-native';
 
-import {useNavigation, useFocusEffect} from '@react-navigation/native';
+import {useFocusEffect} from '@react-navigation/native';
 import {
   LoadingArea,
   BtnSubmitForm,

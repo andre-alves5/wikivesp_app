@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {ActivityIndicator, Alert, View, ScrollView} from 'react-native';
+import {ActivityIndicator, Alert, ScrollView} from 'react-native';
 
 import {useNavigation, useFocusEffect} from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -8,16 +8,12 @@ import {
   Container,
   TitleContent,
   ContentUser,
-  BtnActionEdit,
-  BtnActionDelete,
-  TxtBtnAction,
   LoadingArea,
   ImageUser,
   ViewName,
   ViewImageUser,
   BtnSubmitForm,
   TxtSubmitForm,
-  MainView,
 } from './styles';
 
 import api from '../../config/api';
@@ -63,7 +59,7 @@ export default function Perfil() {
           <ActivityIndicator size="large" color="#fff" />
         </LoadingArea>
       ) : (
-        <MainView>
+        <ScrollView contentContainerStyle={{flexGrow: 1}}>
           <ViewImageUser>
             <ImageUser
               source={{width: 180, height: 180, uri: user.url}}
@@ -121,7 +117,7 @@ export default function Perfil() {
               </TxtSubmitForm>
             </BtnSubmitForm>
           )}
-        </MainView>
+        </ScrollView>
       )}
     </Container>
   );
