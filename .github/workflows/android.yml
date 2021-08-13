@@ -26,6 +26,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+        
+    - name: My Upload Keystore    
       run: |
         echo "${{ secrets.MY_UPLOAD_KEY }}" > my-upload-key.keystore.asc
         gpg -d --passphrase "{{ secrets.KEYSTORE_PASSPHRASE }}" --batch my-upload-key.keystore.asc > app/my-upload-key.keystore
