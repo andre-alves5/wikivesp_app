@@ -29,6 +29,7 @@ jobs:
         
     - name: My Upload Keystore    
       run: |
+        gpg --version
         echo "${{ secrets.MY_UPLOAD_KEY }}" > my-upload-key.txt
         certutil -decode my-upload-key.txt > /home/runner/work/wikivesp_app/wikivesp_app/android/app/my-upload-key.keystore
 
