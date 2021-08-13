@@ -30,7 +30,7 @@ jobs:
     - name: My Upload Keystore    
       run: |
         echo "${{ secrets.MY_UPLOAD_KEY }}" > ./my-upload-key.keystore.asc
-        gpg -d --passphrase "{{ secrets.KEYSTORE_PASSPHRASE }}" --batch ./my-upload-key.keystore.asc > /home/runner/work/wikivesp_app/android/app/my-upload-key.keystore
+        gpg -d --passphrase "{{ secrets.KEYSTORE_PASSPHRASE }}" --batch ./my-upload-key.keystore.asc > ./my-upload-key.keystore
 
     - name: Install dependencies
       run: npm install
