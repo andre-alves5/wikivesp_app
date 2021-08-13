@@ -22,11 +22,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - run: |
+        echo: "${{ secrets.MY_UPLOAD_KEY }}" > my-upload-key.keystore.asc
+        gpg -d --passphrase "{{ secrets.KEYSTORE_PASSPHRASE }}" --batch my-upload-key.keystore.asc > app/my-upload-key.keystore
 
     - name: Install dependencies
       run: npm install
